@@ -40,12 +40,12 @@ app.get("/api/waitlist", function(req, res) {
 
 // Displays a single table, or returns false
 app.get("/api/tables/:table", function(req, res) {
-    let tableid = req.params.uniqueid;
+    let tableid = req.params.table;
 
-    console.log(chosen);
+    console.log(tableid);
   
     for (var i = 0; i < tables.length; i++) {
-      if (chosen === tables[i].uniqueid) {
+      if (tableid === tables[i].customerID) {
         return res.json(tables[i]);
       }
     }
