@@ -53,9 +53,6 @@ app.get("/api/tables/:table", function(req, res) {
     return res.json(false);
   });
 
-
-
-
 // Create New Table - takes in JSON input
 app.post("/api/tables", function(req, res) {
     // req.body hosts is equal to the JSON post sent from the user
@@ -73,9 +70,10 @@ app.post("/api/tables", function(req, res) {
     res.json(newtable);
   });
 
-  app.post("/api/tables", function(req, res) {
+  app.post("/api/clear", function(req, res) {
     tables = [];
     waitlist = [];
+    res.json(tables);
   })
   
   // Starts the server to begin listening
