@@ -73,7 +73,7 @@ app.post("/api/tables", function(req, res) {
     res.json(newtable);
   });
 
-  app.post("/api/tables", function(req, res) {
+  app.post("/api/clear", function(req, res) {
     tables = [];
     waitlist = [];
   })
