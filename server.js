@@ -2,11 +2,27 @@
 // =============================================================
 var express = require("express");
 var path = require("path");
+var mysql = require("mysql")
+
+var connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "root",
+  database: "bamazon"
+});
+
+connection.connect(function(error) {
+  if (error) throw error;
+  console.log("Connected as ID " + connection.threadId);
+  startShopping();
+})
+
 
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 51814      ;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
