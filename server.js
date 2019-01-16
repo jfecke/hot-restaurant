@@ -5,24 +5,23 @@ var path = require("path");
 var mysql = require("mysql")
 
 var connection = mysql.createConnection({
-  host: "localhost",
+  host: "35.224.5.154",
   port: 3306,
-  user: "root",
-  password: "root",
-  database: "bamazon"
+  user: "jfecke",
+  password: "",
+  database: "hot_restaurant"
 });
 
 connection.connect(function(error) {
   if (error) throw error;
   console.log("Connected as ID " + connection.threadId);
-  startShopping();
 })
 
 
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 51814      ;
+var PORT = process.env.PORT || 3000      ;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -53,6 +52,13 @@ app.get("/api/tables", function(req, res) {
 app.get("/api/waitlist", function(req, res) {
     return res.json(waitlist);
 });
+
+app.get("/api/restraunts", function(req, res) {
+  let restraunts = getRestraunts();
+  return res.json(restraunts);
+  //connection.end();
+});
+
 
 // Displays a single table, or returns false
 app.get("/api/tables/:table", function(req, res) {
@@ -97,3 +103,15 @@ app.post("/api/tables", function(req, res) {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
+
+  function getRestraunts() {
+    connection.query("SELECT * FROM restraunts", function(error, results) {
+        if (error) throw error;
+        let restraunts = results;
+        for (let i = 0; i < restraunts.length; i++) {
+          console.log(restraunts[i]);
+          console.log("------------------------")
+        }
+        return restraunts;
+    })
+}
