@@ -109,8 +109,8 @@ app.post("/api/tables", function(req, res) {
     connection.query("SELECT * FROM restraunts", function(error, results) {
         if (error) throw error;
         restaurants = results;
-        for (let i = 0; i < restaurant.length; i++) {
-          console.log(restaurant[i]);
+        for (let i = 0; i < restaurants.length; i++) {
+          console.log(restaurants[i]);
           console.log("------------------------")
         }
     })
