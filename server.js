@@ -55,7 +55,7 @@ app.get("/api/waitlist", function(req, res) {
 });
 
 app.get("/api/restraunts", function(req, res) {
-  restraunts = getRestraunts();
+  getRestraunts();
   return res.json(restraunts);
   //connection.end();
 });
@@ -108,11 +108,10 @@ app.post("/api/tables", function(req, res) {
   function getRestraunts() {
     connection.query("SELECT * FROM restraunts", function(error, results) {
         if (error) throw error;
-        let restraunts = results;
+        restraunts = results;
         for (let i = 0; i < restraunts.length; i++) {
           console.log(restraunts[i]);
           console.log("------------------------")
         }
-        return restraunts;
     })
 }
