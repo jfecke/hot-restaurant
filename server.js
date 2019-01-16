@@ -30,6 +30,7 @@ app.use(express.json());
 //Array of Table Objects
 var tables = [];
 var waitlist = [];
+var restraunts = [];
 
 
 // Basic route that sends the user first to the AJAX Page
@@ -54,8 +55,8 @@ app.get("/api/waitlist", function(req, res) {
 });
 
 app.get("/api/restraunts", function(req, res) {
-  let restraunts = getRestraunts();
-  return res.json(restraunts[0]);
+  restraunts = getRestraunts();
+  return res.json(restraunts);
   //connection.end();
 });
 
