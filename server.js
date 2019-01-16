@@ -30,7 +30,7 @@ app.use(express.json());
 //Array of Table Objects
 var tables = [];
 var waitlist = [];
-var restraunts = [];
+var restaurants = [];
 
 
 // Basic route that sends the user first to the AJAX Page
@@ -54,9 +54,9 @@ app.get("/api/waitlist", function(req, res) {
     return res.json(waitlist);
 });
 
-app.get("/api/restraunts", function(req, res) {
-  getRestraunts();
-  return res.json(restraunts);
+app.get("/api/restaurants", function(req, res) {
+  getRestaurant();
+  return res.json(restaurants);
   //connection.end();
 });
 
@@ -105,12 +105,12 @@ app.post("/api/tables", function(req, res) {
     console.log("App listening on PORT " + PORT);
   });
 
-  function getRestraunts() {
+  function getRestaurant() {
     connection.query("SELECT * FROM restraunts", function(error, results) {
         if (error) throw error;
-        restraunts = results;
-        for (let i = 0; i < restraunts.length; i++) {
-          console.log(restraunts[i]);
+        restaurant = results;
+        for (let i = 0; i < restaurant.length; i++) {
+          console.log(restaurant[i]);
           console.log("------------------------")
         }
     })
