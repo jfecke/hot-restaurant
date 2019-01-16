@@ -55,7 +55,7 @@ app.get("/api/waitlist", function(req, res) {
 
 app.get("/api/restraunts", function(req, res) {
   let restraunts = getRestraunts();
-  return res.json(restraunts);
+  return res.json(restraunts[0]);
   //connection.end();
 });
 
